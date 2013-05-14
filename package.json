@@ -1,0 +1,24 @@
+{
+  "name":        "async-chained",
+  "version":     "0.0.1",
+  "description": "A chainable API for Async.js",
+
+  "repository" : {
+    "type": "git",
+    "url":  "git@github.com:jupiter/async-chained.git"
+  },
+
+  "dependencies": {
+    "async": ">= 0",
+    "underscore": ">= 0"
+  },
+  
+  "devDependencies": {
+    "nodeunit": "0.8.0"
+  },
+  
+  "engines": {
+    "node": ">= 0.8.x",
+    "npm": "1.1.x"
+  }
+}
