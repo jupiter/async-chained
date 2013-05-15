@@ -43,12 +43,12 @@ Note: It is important to understand how non-chainable *async* works to appreciat
 ## API
 
 - **chain**() start a chain
-- chain.**first**(fn) / chain.**then**(fn) `function(cb)` run in series
-- chain.**return**(fn) `function(arg1…n, cb)` where arg1…n is the expected arguments to be returned from the previously called callback
-- chain.**and**(fn) `function(cb)` run in parallel
-- chain.**catch**(err, results, cb) enable error handling before continuing with cb
-OR chain.**catch**(err, waterfallResult1…n, cb) to return all arguments as per waterfall
-- chain.**finish**(err, results) errors from previous callbacks from the start, or if there was a **catch** after the last one
+- chain. **first** (fn) / chain.**then**(fn) `function(cb)` run in series
+- chain. **return** (fn) `function(arg1…n, cb)` where arg1…n is the expected arguments to be returned from the previous callback
+- chain. **and** (fn) `function(cb)` run in parallel
+- chain. **catch** (err, results, cb) enable error handling before continuing with cb
+OR chain. **catch** (err, waterfallResult1…n, cb) to return all arguments as per waterfall
+- chain. **finish** (err, results) errors from previous callbacks from the start, or if there was a **catch** after the last one
 
 ## Compatibility
 
