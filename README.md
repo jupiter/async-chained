@@ -1,6 +1,6 @@
 # Async, chained! ![Project status](https://secure.travis-ci.org/jupiter/async-chained.png?branch=master)
 
-[Async.js](https://github.com/caolan/async) (*async*) is a great shortcut for restraining deeply nested functions and callbacks.  This module adds a chainable API to:
+[Async.js](https://github.com/caolan/async) *async* is a great shortcut for restraining deeply nested functions and callbacks.  This module adds a chainable API to:
 
 1. enable easy switching between series, waterfall and parallel async flows
 2. reduce callbacks within a flow
@@ -9,7 +9,7 @@
 
 Note: It is important to understand how non-chainable *async* works to appreciate this example.
 
-```
+```javascript
   var async = require('async-chained');  	  
 
   async.chain()
@@ -22,19 +22,16 @@ Note: It is important to understand how non-chainable *async* works to appreciat
       
   	  returnedObj.markRead(next);
     })    
-    
     // Series
     .then(function(next){
       persistChanges(5000, next);
     })
-    
     // Switch to parallel
     .and(fetchRandom)
     .and(function(done){
       fetchRelated('id', done)
     })
-    
-    // Finish Chain
+    // Finish
     .finish(function(err, results){
       if (err) return cb(err);
       
