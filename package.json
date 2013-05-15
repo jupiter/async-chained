@@ -2,7 +2,10 @@
   "name":        "async-chained",
   "version":     "0.0.1",
   "description": "A chainable API for Async.js",
-
+	"author": "Pieter Raubenheimer <pieter@wavana.com>",
+	"keywords": ["async", "chainable", "flow"],
+	"main": "./lib/async.js",
+	
   "repository" : {
     "type": "git",
     "url":  "git@github.com:jupiter/async-chained.git"
@@ -17,8 +20,11 @@
     "nodeunit": "0.8.0"
   },
   
+	"scripts": {
+		"test":"./tests.js"
+	},  
+  
   "engines": {
-    "node": ">= 0.8.x",
-    "npm": "1.1.x"
+    "node": ">= 0.8.x"
   }
 }
