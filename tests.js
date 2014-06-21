@@ -29,7 +29,7 @@ exports['async.js integration'] = {
       var self = this;
 
       self.chain.finish(function(err, results){
-        test.same(err, null);
+        test.ok(!err);
         test.same(results, [1,2,3]);
         test.same(self.called, [1,2,3]);
         test.done();
@@ -84,7 +84,7 @@ exports['async.js integration'] = {
       var self = this;
 
       self.chain.finish(function(err, results){
-        test.same(err, null);
+        test.ok(!err);
         test.same(results, 3);
         test.same(self.called, [1,[1, 'one'],3]);
         test.done();
@@ -120,7 +120,7 @@ exports['async.js integration'] = {
           arguments[arguments.length - 1](null, 'etc');
         })
         .finish(function(err, result){
-          test.same(err, null);
+          test.ok(!err);
           test.same(result, 'etc');
           test.same(self.called, [1,[1, 'one'],3, true]);
           test.done();
@@ -137,7 +137,7 @@ exports['async.js integration'] = {
           arguments[arguments.length - 1](null, 'etc');
         })
         .finish(function(err, result){
-          test.same(err, null);
+          test.ok(!err);
           test.same(result, 'etc');
           test.same(self.called, [1,[1, 'one'],3, true]);
           test.done();
@@ -179,7 +179,7 @@ exports['async.js integration'] = {
           }, 20);
         })
         .finish(function(err, results){
-          test.same(err, null);
+          test.ok(!err);
           test.same(results, [[1, 'one'], [2, 'two'], 3]);
           test.same(self.called, [3, 2, 1]);
           test.done();
@@ -212,7 +212,7 @@ exports['async.js integration'] = {
             next(null, 2);
           })
           .catch(function(err, results, next){
-            test.same(err, null);
+            test.ok(!err);
             test.same(results, [1,2]);
             next();
           })
@@ -276,7 +276,7 @@ exports['async.js integration'] = {
             next(null, 2);
           })
           .catch(function(err, results, next){
-            test.same(err, null);
+            test.ok(!err);
             test.same(results, [1, 2]);
             next();
           })
@@ -310,7 +310,7 @@ exports['async.js integration'] = {
             next(null, 2);
           })
           .catch(function(err, results, next){
-            test.same(err, null);
+            test.ok(!err);
             test.same(results, [1, 2]);
             next(self.err);
           })
@@ -341,7 +341,7 @@ exports['async.js integration'] = {
             next(null, 2, 'two');
           })
           .catch(function(err, number, word, next){
-            test.same(err, null);
+            test.ok(!err);
             test.same(number, 2);
             test.same(word, 'two');
             next();
@@ -403,7 +403,7 @@ exports['async.js integration'] = {
             next(null, 2, 'two');
           })
           .catch(function(err, number, word, next){
-            test.same(err, null);
+            test.ok(!err);
             test.same(number, 2);
             test.same(word, 'two');
             next();
@@ -438,7 +438,7 @@ exports['async.js integration'] = {
             next(null, 2, 'two');
           })
           .catch(function(err, number, word, next){
-            test.same(err, null);
+            test.ok(!err);
             test.same(number, 2);
             test.same(word, 'two');
             next(self.err);
