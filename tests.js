@@ -497,5 +497,7 @@ exports['async.js integration'] = {
 
 if (module.id == '.') {
   var reporter = require('nodeunit').reporters.default;
-  reporter.run(exports);
+  reporter.run(exports, null, function(err){
+    if (err) return process.exit(1);
+  });
 }
