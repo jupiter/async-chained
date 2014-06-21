@@ -1,27 +1,30 @@
 # Async, chained! ![Project status](https://secure.travis-ci.org/jupiter/async-chained.png?branch=master)
 
-[Async.js](https://github.com/caolan/async) *async* is a great shortcut for restraining deeply nested functions and callbacks.  This module adds a chainable API to:
+[Async.js](https://github.com/caolan/async) *async* is a great shortcut for restraining
+deeply nested functions and callbacks. This module adds a chainable API to:
 
 1. enable easy switching between series, waterfall and parallel async flows
 2. reduce callbacks within a flow
 
+(This is particularly useful in single-file executable scripts.)
+
 ## Example
 
-Note: It is important to understand how non-chainable *async* works to appreciate this example.
+Note: It is important to understand how [Async.js](https://github.com/caolan/async) works to appreciate this example.
 
 ```javascript
-  var async = require('async-chained');  	  
+  var async = require('async-chained');
 
   async.chain()
     // Waterfall – expect a returned value from callback
     .first(function(next){
-      fetchSomething('id', next)
+      fetchSomething('id', next);
     })
     .return(function(returnedObj, next){
-      if (!returnedObj) return next()
-      
+      if (!returnedObj) return next();
+
   	  returnedObj.markRead(next);
-    })    
+    })
     // Series
     .then(function(next){
       persistChanges(5000, next);
@@ -29,22 +32,23 @@ Note: It is important to understand how non-chainable *async* works to appreciat
     // Switch to parallel
     .and(fetchRandom)
     .and(function(done){
-      fetchRelated('id', done)
+      fetchRelated('id', done);
     })
     // Finish
     .finish(function(err, results){
       if (err) return cb(err);
-      
+
       cb(null, results[0], results[1]);
     });
-	
+
 ```
 
 ## API
 
 - **chain**() start a chain
 - chain. **first** (fn) / chain.**then**(fn) `function(cb)` run in series
-- chain. **return** (fn) `function(arg1…n, cb)` where arg1…n is the expected arguments to be returned from the previous callback
+- chain. **return** (fn) `function(arg1…n, cb)` where arg1…n is the expected arguments to be returned from the previous callback, this signature will always be matched so that the last argument is the
+callback
 - chain. **and** (fn) `function(cb)` run in parallel
 - chain. **catch** (err, results, cb) enable error handling before continuing with cb
 OR chain. **catch** (err, waterfallResult1…n, cb) to return all arguments as per waterfall
